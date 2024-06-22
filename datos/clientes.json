@@ -1,0 +1,20 @@
+[
+    {
+        "id_cliente": 1,
+        "nombre": "Juan",
+        "apellido": "Pérez",
+        "documento": "12345678",
+        "direccion": "Calle Falsa 123",
+        "telefono": "123-4567",
+        "correo_electronico": "juan.perez@example.com"
+    },
+    {
+        "id_cliente": 2,
+        "nombre": "María",
+        "apellido": "Gómez",
+        "documento": "87654321",
+        "direccion": "Avenida Siempreviva 742",
+        "telefono": "987-6543",
+        "correo_electronico": "maria.gomez@example.com"
+    }
+]
