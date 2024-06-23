@@ -33,4 +33,4 @@ class Ventana(Frame) :
         self.ventana.add(self.frame_gestion_transacciones, text="Gestionar Transacciones")
         
         ## Pestaña por defecto
-        self.ventana.select(self.frame_gestion_vehiculos)
+        self.ventana.select(self.frame_gestion_clientes)

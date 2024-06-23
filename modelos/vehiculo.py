@@ -11,8 +11,6 @@ class Vehiculo :
         self.ruta_archivo = 'datos/vehiculos.json'
         self.utils = Utils()
         self.lista_vehiculos = self.utils.leer_archivo_json(self.ruta_archivo)
-        
-        self.archivo_vehiculos_json = 'datos/vehiculos.json'
         self.lista_vehiculos_encontrados = []
 
     def obtener_lista_vehiculos(self) :
@@ -77,7 +75,7 @@ class Vehiculo :
                 self.lista_vehiculos_encontrados.append(vehiculo)
 
     def eliminar(self, patentes_a_eliminar) :
-        
+        ## Crea la lista filtrando los documentos que recive
         self.lista_vehiculos = [vehiculo for vehiculo in self.lista_vehiculos if vehiculo["patente"] not in patentes_a_eliminar]
 
         exito = self.utils.guardar_archivo_json(self.ruta_archivo, self.lista_vehiculos)
@@ -106,6 +104,12 @@ class Vehiculo :
     
     ### FUNCIONES VALIDADORAS
     
+    def patente_existente(self, patente) :
+        for vehiculo in self.lista_vehiculos :
+            if vehiculo.get('patente') == patente : 
+                return True
+        return False
+    
     def validar_formato_patente(self, patente) :
         """ Funcion que retorna verdadero si la patente coincide con algunos de los formatos validos.
         Formatos validos : XX000XX - XXX000
@@ -116,11 +120,6 @@ class Vehiculo :
         else :
             return False
         
-    def patente_existente(self, patente) :
-        for vehiculo in self.lista_vehiculos :
-            if vehiculo.get('patente') == patente : 
-                return True
-        return False
         
     
     

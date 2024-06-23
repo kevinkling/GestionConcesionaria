@@ -39,10 +39,10 @@ class GestionVehiculos(Frame) :
         self.area_botones_accionarios.pack(side=BOTTOM, expand=True, fill=BOTH, padx=5, pady=5)
         
         ## Llamada a funciones creadoras de widgets
+        self.crear_formulario()
         self.crear_barra_busqueda()
         self.crear_grilla()
         self.rellenar_grilla(False)
-        self.crear_formulario()
         self.crar_botones_edicion_eliminacion()
 
     def crear_formulario(self) :
