@@ -162,6 +162,7 @@ cython_debug/
 #.idea/
 
 ## VisualStudio
+.\.vscode\
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

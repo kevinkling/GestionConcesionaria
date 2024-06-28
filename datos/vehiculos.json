@@ -1,15 +1,15 @@
 [
   {
     "id_vehiculo": 1,
-    "patente": "ABC123",
+    "patente": "ABC127",
     "marca": "Toyota",
     "modelo": "Corolla",
-    "tipo": "Sedan",
-    "año": 2015,
+    "tipo": "Pickup",
+    "año": 2010,
     "kilometraje": 75000,
-    "precio_compra": 12000,
-    "precio_venta": 15000,
-    "estado": "Disponible"
+    "precio_compra": 12000.0,
+    "precio_venta": 11000.0,
+    "estado": "Vendido"
   },
   {
     "id_vehiculo": 2,
@@ -48,18 +48,6 @@
     "estado": "Vendido"
   },
   {
-    "id_vehiculo": 6,
-    "patente": "ASDF",
-    "marca": "Lkj",
-    "modelo": "Lkj",
-    "tipo": "Lkj",
-    "año": 123,
-    "kilometraje": 123,
-    "precio_compra": 213.0,
-    "precio_venta": 1231.0,
-    "estado": "Disponible"
-  },
-  {
     "id_vehiculo": 7,
     "patente": "DBY640",
     "marca": "Chevrolet",
@@ -69,7 +57,7 @@
     "kilometraje": 174993,
     "precio_compra": 700000.0,
     "precio_venta": 1344321.0,
-    "estado": "Disponible"
+    "estado": "Vendido"
   },
   {
     "id_vehiculo": 8,
@@ -93,7 +81,7 @@
     "kilometraje": 2342,
     "precio_compra": 2342344.0,
     "precio_venta": 3242342.0,
-    "estado": "Disponible"
+    "estado": "Vendido"
   },
   {
     "id_vehiculo": 10,
@@ -105,7 +93,7 @@
     "kilometraje": 2314,
     "precio_compra": 42342.0,
     "precio_venta": 42342.0,
-    "estado": "Disponible"
+    "estado": "Vendido"
   },
   {
     "id_vehiculo": 11,
@@ -117,30 +105,6 @@
     "kilometraje": 21313,
     "precio_compra": 2312312.0,
     "precio_venta": 31231.0,
-    "estado": "Disponible"
-  },
-  {
-    "id_vehiculo": 13,
-    "patente": "XX 123 XX",
-    "marca": "Asdfa",
-    "modelo": "Asdfasd",
-    "tipo": "Asdfas",
-    "año": 1231,
-    "kilometraje": 12312,
-    "precio_compra": 3123.0,
-    "precio_venta": 213.0,
-    "estado": "Disponible"
-  },
-  {
-    "id_vehiculo": 14,
-    "patente": "XXX 123",
-    "marca": "Asdfasd",
-    "modelo": "Asdfasdf",
-    "tipo": "Asfasdfa",
-    "año": 123123,
-    "kilometraje": 12312,
-    "precio_compra": 312312.0,
-    "precio_venta": 312.0,
     "estado": "Disponible"
   },
   {
@@ -201,6 +165,18 @@
     "kilometraje": 123,
     "precio_compra": 1213.0,
     "precio_venta": 231312.0,
+    "estado": "Disponible"
+  },
+  {
+    "id_vehiculo": 20,
+    "patente": "LKJ123",
+    "marca": "Toyota",
+    "modelo": "Prueba",
+    "tipo": "Sedan",
+    "año": 2023,
+    "kilometraje": 123123,
+    "precio_compra": 312312.0,
+    "precio_venta": 312312.0,
     "estado": "Disponible"
   }
 ]

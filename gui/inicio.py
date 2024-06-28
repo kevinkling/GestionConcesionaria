@@ -1,4 +1,7 @@
 from tkinter import *
 
 class Inicio(Frame) :
-    pass
+    def __init__(self, master=None) :
+        super().__init__(master)
+        self.master = master
+        self.font = "Comic Sans"

@@ -36,21 +36,21 @@
     "correo_electronico": "keivn.kling@outlook.es"
   },
   {
-    "id_cliente": 6,
-    "nombre": "Roberto",
-    "apellido": "Lopez",
-    "documento": 214312,
-    "direccion": "Sara neira 23",
-    "telefono": "3242432",
-    "correo_electronico": "nose@gmail.com"
-  },
-  {
     "id_cliente": 7,
-    "nombre": "Manolo",
+    "nombre": "Manolito",
     "apellido": "Felz",
     "documento": 2345123421,
     "direccion": "Fransico ramirez",
     "telefono": "423423",
     "correo_electronico": "emial@gmail.com"
+  },
+  {
+    "id_cliente": 8,
+    "nombre": "Luz",
+    "apellido": "Cymba",
+    "documento": 98237498,
+    "direccion": "Calle de sansa 123",
+    "telefono": "0923840293",
+    "correo_electronico": "laluz@gmail.com"
   }
 ]

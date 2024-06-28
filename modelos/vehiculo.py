@@ -16,6 +16,16 @@ class Vehiculo :
     def obtener_lista_vehiculos(self) :
         """ Retorna los vehiculos  """
         return self.lista_vehiculos
+    
+    def obtener_lista_vehiculos_disponibles(self) :
+        lista_vehiculos_disponibles = []
+        for vehiculo in self.lista_vehiculos :
+            if vehiculo.get('estado') == "Disponible" :
+                lista_vehiculos_disponibles.append(vehiculo)
+        return lista_vehiculos_disponibles
+    
+    def obtener_lista_vehiculos_actualizada(self) :
+        return self.utils.leer_archivo_json(self.ruta_archivo)
 
     def crear_vehiculo(self, nuevo_vehiculo) :
         self.lista_vehiculos.append(nuevo_vehiculo)
@@ -33,46 +43,56 @@ class Vehiculo :
         
         match tipo_busqueda:
             case "Patente":
-                self.buscar_vehiculo_patente(busqueda.upper())
+                return self.buscar_vehiculo_patente(busqueda.upper())
             case "Marca":
-                self.buscar_vehiculo_marca(busqueda.capitalize())
+                return self.buscar_vehiculo_marca(busqueda.capitalize())
             case "Modelo":
-                self.buscar_vehiculo_modelo(busqueda.capitalize())
+                return self.buscar_vehiculo_modelo(busqueda.capitalize())
             case "Precio de compra":
-                self.buscar_vehiculo_precio_compra(busqueda)
+                return self.buscar_vehiculo_precio_compra(busqueda)
             case "Precio de venta":
-                self.buscar_vehiculo_precio_venta(busqueda)
+                return self.buscar_vehiculo_precio_venta(busqueda)
                 
         return self.lista_vehiculos_encontrados
 
     def buscar_vehiculo_patente(self, patente) :
+        lista_vehiculos = []
         for vehiculo in self.lista_vehiculos :
             if vehiculo.get('patente') == patente : 
-                self.lista_vehiculos_encontrados.append(vehiculo)
+                lista_vehiculos.append(vehiculo)
+        return lista_vehiculos
 
-    def buscar_vehiculo_marca(self, marca) :        
+    def buscar_vehiculo_marca(self, marca) :
+        lista_vehiculos = []      
         for vehiculo in self.lista_vehiculos :
             if vehiculo.get('marca') == marca : 
-                self.lista_vehiculos_encontrados.append(vehiculo)
+                lista_vehiculos.append(vehiculo)
+        return lista_vehiculos
 
     def buscar_vehiculo_modelo(self, modelo) :
+        lista_vehiculos = []
         for vehiculo in self.lista_vehiculos :
             if vehiculo.get('modelo') == modelo : 
-                self.lista_vehiculos_encontrados.append(vehiculo)
-
+                lista_vehiculos.append(vehiculo)
+        return lista_vehiculos
+        
     def buscar_vehiculo_precio_compra(self, precio) :
+        lista_vehiculos = []
         precio = float(precio)
         
         for vehiculo in self.lista_vehiculos :
             if vehiculo.get('precio_compra') == precio : 
-                self.lista_vehiculos_encontrados.append(vehiculo)
+                lista_vehiculos.append(vehiculo)
+        return lista_vehiculos
 
     def buscar_vehiculo_precio_venta(self, precio) :
+        lista_vehiculos = []
         precio = float(precio)
             
         for vehiculo in self.lista_vehiculos :
             if vehiculo.get('precio_venta') == precio : 
-                self.lista_vehiculos_encontrados.append(vehiculo)
+                lista_vehiculos.append(vehiculo)
+        return lista_vehiculos
 
     def eliminar(self, patentes_a_eliminar) :
         ## Crea la lista filtrando los documentos que recive
@@ -102,6 +122,33 @@ class Vehiculo :
                 return vehiculo
         return None
     
+    def obtener_monto_venta(self, patente) :
+        """ Funcion que retorna el monto de venta de un vehiculo """
+        for vehiculo in self.lista_vehiculos :
+            if vehiculo.get('patente') == patente : 
+                return vehiculo.get('precio_venta')
+    
+    def obtener_monto_compra(self, patente) :
+        """ Funcion que retorna el monto de compra de un vehiculo """        
+        for vehiculo in self.lista_vehiculos :
+            if vehiculo.get('patente') == patente : 
+                return vehiculo.get('precio_compra')
+            
+    def obtener_marca_modelo_por_id(self, id_vehiculo) :
+        """ Recibe un id y devuelve un string con el nombre y apellido  """
+        for vehiculo in self.lista_vehiculos :
+            if vehiculo.get('id_vehiculo') == id_vehiculo : 
+                return f"{vehiculo.get('marca')} {vehiculo.get('modelo')}"
+        return None
+
+    def marcar_como_vendido(self, id_vehiculo) :
+        """ Recibe un id y setea como vendido el vehiculo """
+        for vehiculo in self.lista_vehiculos :
+            if vehiculo.get('id_vehiculo') == id_vehiculo : 
+                vehiculo['estado'] = "Vendido"
+                self.utils.guardar_archivo_json(self.ruta_archivo, self.lista_vehiculos)
+        
+    
     ### FUNCIONES VALIDADORAS
     
     def patente_existente(self, patente) :
@@ -114,12 +161,9 @@ class Vehiculo :
         """ Funcion que retorna verdadero si la patente coincide con algunos de los formatos validos.
         Formatos validos : XX000XX - XXX000
         Donde xxx es cualquier letra y 000 cualquier numero"""
-        regex = r"^[A-Z-Ñ]{3}\d{3}$|^[A-Z-Ñ]{2}\d{3}[A-Z-Ñ]{2}$|^[A-Z-Ñ]{3} \d{3}$|^[A-Z-Ñ]{2} \d{3} [A-Z-Ñ]{2}$"
-        if re.fullmatch(regex, patente) :
+        formato_valido = r"^[A-Z-Ñ]{3}\d{3}$|^[A-Z-Ñ]{2}\d{3}[A-Z-Ñ]{2}$|^[A-Z-Ñ]{3} \d{3}$|^[A-Z-Ñ]{2} \d{3} [A-Z-Ñ]{2}$"
+        if re.fullmatch(formato_valido, patente) :
             return True
         else :
             return False
         
-        
-    
-    

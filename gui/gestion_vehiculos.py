@@ -155,11 +155,14 @@ class GestionVehiculos(Frame) :
         else :
             self.rellenar_grilla(True)
 
-    def rellenar_grilla(self, es_busqueda) :
+    def rellenar_grilla(self, es_busqueda, rellenar_hard=False) :
         """ Funcion que se encarga de rellenar la grilla.
             Si es_busqueda es false, mostrara todos los vehiculos"""
         if not es_busqueda :
-            vehiculos = self.vehiculo_man.obtener_lista_vehiculos()
+            if not rellenar_hard :
+                vehiculos = self.vehiculo_man.obtener_lista_vehiculos()
+            else :
+                vehiculos = self.vehiculo_man.obtener_lista_vehiculos_actualizada()
         else :
             vehiculos = self.vehiculo_man.buscar_vehiculo(self.combo_tipo_busqueda.get(), self.ingreso_busqueda.get())
         
@@ -178,10 +181,10 @@ class GestionVehiculos(Frame) :
             self.grilla.insert("", END, text=patente, 
                         values=(marca, modelo, tipo, anio, kms, pre_compra, pre_venta, estado))
    
-    def actualizar_grilla(self) :
+    def actualizar_grilla(self, hard) :
         """ Funcion que borra los items de la grilla y los vulve a rellenar """
         self.grilla.delete(*self.grilla.get_children())
-        self.rellenar_grilla(False)    
+        self.rellenar_grilla(False, hard)
 
     def crear_vehiculo(self) :
         """ Funcion encargada de crear el vehiculo nuevo """

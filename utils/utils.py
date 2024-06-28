@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 """ Funciones utiles """
 
 class Utils :
@@ -35,4 +36,6 @@ class Utils :
             print(f"Error al guardar en '{ruta_archivo}': {e}")
             return False
 
-    
+    def fecha_hoy_yyyy_mm_dd(self) :
+        """ Funcion que retorna la fecha de hoy """
+        return datetime.today().strftime('%Y-%m-%d')

@@ -1,21 +1,128 @@
 [
-    {
-      "id_transaccion": 1,
-      "id_vehiculo": 1,
-      "id_cliente": 1,
-      "tipo_transaccion": "Venta",
-      "fecha": "2024-01-15",
-      "monto": 15000,
-      "observaciones": "Venta realizada con éxito."
-    },
-    {
-      "id_transaccion": 2,
-      "id_vehiculo": 2,
-      "id_cliente": 2,
-      "tipo_transaccion": "Compra",
-      "fecha": "2024-01-20",
-      "monto": 14000,
-      "observaciones": "Compra registrada."
-    }
-  ]
-  
+  {
+    "id_transaccion": 1,
+    "id_vehiculo": 1,
+    "id_cliente": 1,
+    "tipo_transaccion": "Venta",
+    "fecha": "2024-01-15",
+    "monto": 15000,
+    "observaciones": "Venta realizada con éxito."
+  },
+  {
+    "id_transaccion": 2,
+    "id_vehiculo": 2,
+    "id_cliente": 2,
+    "tipo_transaccion": "Compra",
+    "fecha": "2024-01-20",
+    "monto": 14000,
+    "observaciones": "Compra registrada."
+  },
+  {
+    "id_transaccion": 3,
+    "id_vehiculo": 1,
+    "id_cliente": 2,
+    "tipo_transaccion": "Compra",
+    "fecha": "2024-06-26",
+    "monto": 15000.0,
+    "observaciones": "Actualiza??"
+  },
+  {
+    "id_transaccion": 4,
+    "id_vehiculo": 1,
+    "id_cliente": 2,
+    "tipo_transaccion": "Venta",
+    "fecha": "2024-06-26",
+    "monto": 12000.0,
+    "observaciones": "Actualiza??"
+  },
+  {
+    "id_transaccion": 5,
+    "id_vehiculo": 1,
+    "id_cliente": 2,
+    "tipo_transaccion": "Venta",
+    "fecha": "2024-06-27",
+    "monto": 12000.0,
+    "observaciones": "marca vendido"
+  },
+  {
+    "id_transaccion": 6,
+    "id_vehiculo": 1,
+    "id_cliente": 4,
+    "tipo_transaccion": "Venta",
+    "fecha": "2024-06-27",
+    "monto": 12000.0,
+    "observaciones": "marca vendido"
+  },
+  {
+    "id_transaccion": 7,
+    "id_vehiculo": 9,
+    "id_cliente": 7,
+    "tipo_transaccion": "Venta",
+    "fecha": "2024-06-27",
+    "monto": 2342344.0,
+    "observaciones": "marcar vendido"
+  },
+  {
+    "id_transaccion": 8,
+    "id_vehiculo": 9,
+    "id_cliente": 2,
+    "tipo_transaccion": "Venta",
+    "fecha": "2024-06-27",
+    "monto": 2342344.0,
+    "observaciones": "vendido?"
+  },
+  {
+    "id_transaccion": 9,
+    "id_vehiculo": 10,
+    "id_cliente": 2,
+    "tipo_transaccion": "Venta",
+    "fecha": "2024-06-27",
+    "monto": 42342.0,
+    "observaciones": "vendido?"
+  },
+  {
+    "id_transaccion": 10,
+    "id_vehiculo": 7,
+    "id_cliente": 2,
+    "tipo_transaccion": "Compra",
+    "fecha": "2024-06-28",
+    "monto": 1344321.0,
+    "observaciones": "lkj"
+  },
+  {
+    "id_transaccion": 11,
+    "id_vehiculo": 11,
+    "id_cliente": 2,
+    "tipo_transaccion": "Venta",
+    "fecha": "2024-06-28",
+    "monto": 2312312.0,
+    "observaciones": "asd"
+  },
+  {
+    "id_transaccion": 12,
+    "id_vehiculo": 7,
+    "id_cliente": 2,
+    "tipo_transaccion": "Compra",
+    "fecha": "2024-06-28",
+    "monto": 1344321.0,
+    "observaciones": "hol"
+  },
+  {
+    "id_transaccion": 13,
+    "id_vehiculo": 11,
+    "id_cliente": 2,
+    "tipo_transaccion": "Compra",
+    "fecha": "2024-06-28",
+    "monto": 31231.0,
+    "observaciones": "holis"
+  },
+  {
+    "id_transaccion": 14,
+    "id_vehiculo": 7,
+    "id_cliente": 1,
+    "tipo_transaccion": "Venta",
+    "fecha": "2024-06-28",
+    "monto": 700000.0,
+    "observaciones": "limpia?"
+  }
+]

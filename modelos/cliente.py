@@ -1,4 +1,3 @@
-import re
 from utils.utils import Utils 
 
 """
@@ -10,12 +9,12 @@ class Cliente :
         self.ruta_archivo = 'datos/clientes.json'
         self.utils = Utils()
         self.lista_clientes = self.utils.leer_archivo_json(self.ruta_archivo)
-        self.lista_clientes_encontrados = []
+        # self.lista_clientes_encontrados = []
     
     def obtener_lista_clientes(self) :
-        """ Retorna los clientes  """
+        """ Retorna los clientes """
         return self.lista_clientes
-    
+      
     def crear_cliente(self, nuevo_cliente) :
         self.lista_clientes.append(nuevo_cliente)
         exito = self.utils.guardar_archivo_json(self.ruta_archivo, self.lista_clientes)
@@ -94,6 +93,17 @@ class Cliente :
             if cliente.get('id_cliente') == id_cliente : 
                 return cliente
         return None
+    
+    def obtener_nombre_apellido_por_id(self, id_cliente) :
+        """ Recibe un id y devuelve un string con el nombre y apellido  """
+        for cliente in self.lista_clientes :
+            if cliente.get('id_cliente') == id_cliente : 
+                return f"{cliente.get('nombre')} {cliente.get('apellido')}"
+        return None
+    
+
+    # def listar_clientes(self) :
+        
      
     
     
