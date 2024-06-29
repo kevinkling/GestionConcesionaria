@@ -181,7 +181,7 @@ class GestionVehiculos(Frame) :
             self.grilla.insert("", END, text=patente, 
                         values=(marca, modelo, tipo, anio, kms, pre_compra, pre_venta, estado))
    
-    def actualizar_grilla(self, hard) :
+    def actualizar_grilla(self, hard=False) :
         """ Funcion que borra los items de la grilla y los vulve a rellenar """
         self.grilla.delete(*self.grilla.get_children())
         self.rellenar_grilla(False, hard)

@@ -1,4 +1,5 @@
 from tkcalendar import DateEntry 
+from datetime import datetime
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox as msg
@@ -41,7 +42,7 @@ class GestionTransacciones(Frame) :
         
         
     def crear_widgets_formulario(self) :
-        self.lbl_cliente = Label(self.area_form, text="Cliente")
+        self.lbl_cliente = Label(self.area_form, text="Cliente", font=self.font_form)
         self.lbl_cliente.pack(padx=10, pady=10)
         
         ## Crea el widget de seleccion de clientes
@@ -51,7 +52,7 @@ class GestionTransacciones(Frame) :
         self.ingreso_cliente = ttk.Combobox(self.area_form, values=self.lista_nombre_clientes, state="readonly", width=35)
         self.ingreso_cliente.pack(padx=10, pady=10)
         
-        self.lbl_vehiculo = Label(self.area_form, text="Vehiculo")
+        self.lbl_vehiculo = Label(self.area_form, text="Vehiculo", font=self.font_form)
         self.lbl_vehiculo.pack(padx=10, pady=10)
         
         ## Crea el widget de seleccion de vehiculos
@@ -61,7 +62,7 @@ class GestionTransacciones(Frame) :
         self.ingreso_vehiculo = ttk.Combobox(self.area_form, values=lista_autos, state="readonly", width=25)
         self.ingreso_vehiculo.pack(padx=10, pady=10)
         
-        self.lbl_operacion = Label(self.area_form, text="Tipo de Operación : ")
+        self.lbl_operacion = Label(self.area_form, text="Tipo de Operación : ", font=self.font_form)
         self.lbl_operacion.pack(padx=10, pady=10)
         
         # FIXME - Hacer que cuando levante el form, las dos opciones esten deselccionadas
@@ -74,7 +75,7 @@ class GestionTransacciones(Frame) :
         self.radio_btn_venta.pack(padx=10, pady=10)
         
         
-        self.lbl_observacion = Label(self.area_form, text="Observaciónes")
+        self.lbl_observacion = Label(self.area_form, text="Observaciónes", font=self.font_form)
         self.lbl_observacion.pack(padx=10, pady=10)
         
         self.txt_area = Text(self.area_form, wrap='word', width=40, height=10)
@@ -82,7 +83,6 @@ class GestionTransacciones(Frame) :
         
         self.btn_realizar_tran = Button(self.area_form, text="Realizar Transaccion", font=self.font_form, command=self.crear_transaccion_nueva, padx=5, pady=4)
         self.btn_realizar_tran.pack(padx=10, pady=10)
-        
         
 
     def crear_widgets_listado_compras(self) :
@@ -97,29 +97,69 @@ class GestionTransacciones(Frame) :
     
     def filtrado_listado_compras(self) :
         """ Funcion que realiza la busqueda y actualiza la grilla de transacciones de compra"""
-        # self.grilla_compra.delete(*self.grilla_compra.get_children())
+        if self.combo_lista_clientes_compra.get() != "" and self.combo_lista_vehiculos_compra.get() != "" :
+            self.rellenar_grilla(True, True)
         ## Si el campo de busqueda no contiene nada me muestra la grilla sin filtros
-        msg.showinfo("", "POR HACER FILTRO DE LISTA DE COMPRAS")
+        elif self.combo_lista_clientes_compra.get() == "" and self.combo_lista_vehiculos_compra.get() == "" :
+            self.rellenar_grilla(True, False)
+        else :
+            msg.showwarning("Advertencia", "Seleccione un vehiculo y un cliente para filtrar las transacciones.\n"
+                            "O no seleccione niguno para mostrar la grilla completa")
 
     
     def filtrado_listado_ventas(self) :
-        msg.showinfo("", "POR HACER FILTRO DE LISTA DE VENTAS")
+        """ Funcion que realiza la busqueda y actualiza la grilla de transacciones de venta"""
+        if self.combo_lista_clientes_venta.get() != "" and self.combo_lista_vehiculos_venta.get() != "" :
+            self.rellenar_grilla(False, True)
+        ## Si el campo de busqueda no contiene nada me muestra la grilla sin filtros
+        elif self.combo_lista_clientes_venta.get() == "" and self.combo_lista_vehiculos_venta.get() == "" :
+            self.rellenar_grilla(False, False)
+        else :
+            msg.showwarning("Advertencia", "Seleccione un vehiculo y un cliente para filtrar las transacciones.\n"
+                            "O no seleccione niguno para mostrar la grilla completa")
     
     def crear_grilla(self, area) :
         columnas = ["ID","Vehiculo", "Cliente", "Fecha", "Monto", "Observaciones"]
         self.grilla = ttk.Treeview(area, columns=columnas, show="headings")
         for col in columnas :
             self.grilla.heading(col, text=col)
-            self.grilla.column(col, minwidth=9, width=100)
+            if col == "ID" :
+                self.grilla.column(col, minwidth=9, width=10, anchor='center')
+            elif col == "Observaciones":
+                self.grilla.column(col, minwidth=9, width=200)    
+            else :
+                self.grilla.column(col, minwidth=9, width=100, anchor='center')
+        
+        scrollbar_y = Scrollbar(area, orient="vertical", command=self.grilla.yview)
+        scrollbar_y.pack(side="right", fill="y")        
+        self.grilla.configure(yscrollcommand=scrollbar_y.set)
         self.grilla.pack(expand=True, fill=BOTH)
         return self.grilla
     
 
     def rellenar_grilla(self, es_compra, es_busqueda=False) :
         if es_compra :
-            transacciones = self.transaccion_man.obtener_lista_transacciones_compra()
+            if es_busqueda :
+                fecha_desde = self.entry_fecha_desde_compra.get_date().strftime("%Y-%m-%d")
+                fecha_hasta = self.entry_fecha_hasta_compra.get_date().strftime("%Y-%m-%d")
+                patente_vehiculo = self.combo_lista_vehiculos_compra.get().split('-')[1].strip()
+                documento_cliente = int(self.combo_lista_clientes_compra.get().split('-')[1].strip())
+                id_vehiculo = self.vehiculo_man.obtener_id_por_patente(patente_vehiculo)
+                id_cliente = self.cliente_man.obtener_id_por_documento(documento_cliente)
+                transacciones = self.transaccion_man.obtener_lista_transacciones_compra_filtro(fecha_desde, fecha_hasta, id_vehiculo, id_cliente)
+            else :
+                transacciones = self.transaccion_man.obtener_lista_transacciones_compra()
         else :
-            transacciones = self.transaccion_man.obtener_lista_transacciones_venta()
+            if es_busqueda :
+                fecha_desde = self.entry_fecha_desde_venta.get_date().strftime("%Y-%m-%d")
+                fecha_hasta = self.entry_fecha_hasta_venta.get_date().strftime("%Y-%m-%d")
+                patente_vehiculo = self.combo_lista_vehiculos_venta.get().split('-')[1].strip()
+                documento_cliente = int(self.combo_lista_clientes_venta.get().split('-')[1].strip())
+                id_vehiculo = self.vehiculo_man.obtener_id_por_patente(patente_vehiculo)
+                id_cliente = self.cliente_man.obtener_id_por_documento(documento_cliente)
+                transacciones = self.transaccion_man.obtener_lista_transacciones_venta_filtro(fecha_desde, fecha_hasta, id_vehiculo, id_cliente)
+            else :
+                transacciones = self.transaccion_man.obtener_lista_transacciones_venta()
                   
         self.borrar_elementos_lista(es_compra)
         for tran in transacciones :
@@ -133,8 +173,7 @@ class GestionTransacciones(Frame) :
                 self.grilla_compra.insert("", END, values=(id, vehiculo, cliente, fecha, monto, observaciones))
             else : 
                 self.grilla_venta.insert("", END, values=(id, vehiculo, cliente, fecha, monto, observaciones))
-            
-    
+
     def actualizar_grilla(self, es_compra) :
         self.rellenar_grilla(es_compra)
     
@@ -168,22 +207,22 @@ class GestionTransacciones(Frame) :
         self.lbl_cliente_compra.grid(row=0, column=4)
         
         
-        self.lista_nombre_clientes = []
+        lista_nombre_clientes = [""]
         for cliente in self.cliente_man.obtener_lista_clientes() :
-            self.lista_nombre_clientes.append(f"{cliente.get('nombre')} {cliente.get('apellido')} - {cliente.get('documento')}")
+            lista_nombre_clientes.append(f"{cliente.get('nombre')} {cliente.get('apellido')} - {cliente.get('documento')}")
             
-        self.combo_lista_clientes_compra = ttk.Combobox(seccion_busqueda, values=self.lista_nombre_clientes, state="readonly", width=25)
+        self.combo_lista_clientes_compra = ttk.Combobox(seccion_busqueda, values=lista_nombre_clientes, state="readonly", width=25)
         self.combo_lista_clientes_compra.grid(row=0, column=5)
         
         self.lbl_vehiculo_compra = Label(seccion_busqueda, text="Vehiculo: ", padx=10, pady=10)
         self.lbl_vehiculo_compra.grid(row=0, column=7)
         
-        lista_autos = []
+        lista_autos = [""]
         for vehiculo in self.vehiculo_man.obtener_lista_vehiculos() :
             lista_autos.append(f"{vehiculo.get('marca')} {vehiculo.get('modelo')} - {vehiculo.get('patente')}")
         
-        self.combo_lista_vehiculos = ttk.Combobox(seccion_busqueda, values=lista_autos, state="readonly", width=25)
-        self.combo_lista_vehiculos.grid(row=0, column=8)
+        self.combo_lista_vehiculos_compra = ttk.Combobox(seccion_busqueda, values=lista_autos, state="readonly", width=25)
+        self.combo_lista_vehiculos_compra.grid(row=0, column=8)
         
         self.btn_buscar_compra = Button(seccion_busqueda, text="Filtrar", font=self.font_form, command=self.filtrado_listado_compras)
         self.btn_buscar_compra.grid(row=0, column=9, padx=10)
@@ -209,7 +248,7 @@ class GestionTransacciones(Frame) :
         self.lbl_cliente_venta.grid(row=0, column=4)
         
         
-        lista_nombre_clientes = []
+        lista_nombre_clientes = [""]
         for cliente in self.cliente_man.obtener_lista_clientes() :
             lista_nombre_clientes.append(f"{cliente.get('nombre')} {cliente.get('apellido')} - {cliente.get('documento')}")
             
@@ -219,7 +258,7 @@ class GestionTransacciones(Frame) :
         self.lbl_vehiculo_venta = Label(seccion_busqueda, text="Vehiculo: ", padx=10, pady=10)
         self.lbl_vehiculo_venta.grid(row=0, column=7)
         
-        lista_autos = []
+        lista_autos = [""]
         for vehiculo in self.vehiculo_man.obtener_lista_vehiculos() :
             lista_autos.append(f"{vehiculo.get('marca')} {vehiculo.get('modelo')} - {vehiculo.get('patente')}")
         
@@ -229,8 +268,7 @@ class GestionTransacciones(Frame) :
         self.btn_buscar_venta = Button(seccion_busqueda, text="Filtrar", font=self.font_form, command=self.filtrado_listado_ventas)
         self.btn_buscar_venta.grid(row=0, column=9, padx=10)
         
-        
-        
+
     def crear_transaccion_nueva(self) :
         """ Funcion encargada de crear la transaccion nueva """
         

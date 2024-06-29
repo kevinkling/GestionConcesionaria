@@ -34,3 +34,23 @@ class Transaccion :
         """ Retorna el id del ultimo transaccion o 0 si la lista esta vacia """
         ultima_transaccion = self.lista_transacciones[-1]
         return ultima_transaccion.get('id_transaccion', 0)
+    
+    def obtener_lista_transacciones_compra_filtro(self, fecha_desde, fecha_hasta, id_vehiculo, id_cliente) :
+        if not all([fecha_desde, fecha_hasta, id_vehiculo, id_cliente]):
+            raise ValueError("Falta un parametro")
+        lista_transacciones_filtradas = []
+        for tran in self.lista_transacciones :
+            if (tran.get('tipo_transaccion') == "Compra" and tran.get('id_vehiculo') == id_vehiculo and tran.get('id_cliente') == id_cliente 
+                and fecha_desde <= tran.get('fecha') <= fecha_hasta) :
+                lista_transacciones_filtradas.append(tran)
+        return lista_transacciones_filtradas
+    
+    def obtener_lista_transacciones_venta_filtro(self, fecha_desde, fecha_hasta, id_vehiculo, id_cliente) :
+        if not all([fecha_desde, fecha_hasta, id_vehiculo, id_cliente]):
+            raise ValueError("Falta un parametro")
+        lista_transacciones_filtradas = []
+        for tran in self.lista_transacciones :
+            if (tran.get('tipo_transaccion') == "Venta" and tran.get('id_vehiculo') == id_vehiculo and tran.get('id_cliente') == id_cliente 
+                and fecha_desde <= tran.get('fecha') <= fecha_hasta) :
+                lista_transacciones_filtradas.append(tran)
+        return lista_transacciones_filtradas 

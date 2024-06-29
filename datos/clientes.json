@@ -16,41 +16,5 @@
     "direccion": "Avenida Siempreviva 742",
     "telefono": "987-6543",
     "correo_electronico": "maria.gomez@example.com"
-  },
-  {
-    "id_cliente": 4,
-    "nombre": "Rodrigo luis",
-    "apellido": "Cerros",
-    "documento": 3123123213,
-    "direccion": "Calle verdadera 123",
-    "telefono": "231231",
-    "correo_electronico": "rodrigo@gmail.com"
-  },
-  {
-    "id_cliente": 5,
-    "nombre": "Kevin david",
-    "apellido": "Kling",
-    "documento": 12345678,
-    "direccion": "Avinda jj urquiza",
-    "telefono": "3242342",
-    "correo_electronico": "keivn.kling@outlook.es"
-  },
-  {
-    "id_cliente": 7,
-    "nombre": "Manolito",
-    "apellido": "Felz",
-    "documento": 2345123421,
-    "direccion": "Fransico ramirez",
-    "telefono": "423423",
-    "correo_electronico": "emial@gmail.com"
-  },
-  {
-    "id_cliente": 8,
-    "nombre": "Luz",
-    "apellido": "Cymba",
-    "documento": 98237498,
-    "direccion": "Calle de sansa 123",
-    "telefono": "0923840293",
-    "correo_electronico": "laluz@gmail.com"
   }
 ]
