@@ -176,6 +176,12 @@ class GestionTransacciones(Frame) :
 
     def actualizar_grilla(self, es_compra) :
         self.rellenar_grilla(es_compra)
+        
+    def actualizar_selectores(self) :
+        lista_autos = [""]
+        for vehiculo in self.vehiculo_man.obtener_lista_vehiculos_disponibles(True) :
+            lista_autos.append(f"{vehiculo.get('marca')} {vehiculo.get('modelo')} - {vehiculo.get('patente')}")
+        self.ingreso_vehiculo['values'] = lista_autos
     
     def borrar_elementos_lista(self, es_compra) :
         """ Funcion que borra los elementos de grilla.
@@ -226,8 +232,7 @@ class GestionTransacciones(Frame) :
         
         self.btn_buscar_compra = Button(seccion_busqueda, text="Filtrar", font=self.font_form, command=self.filtrado_listado_compras)
         self.btn_buscar_compra.grid(row=0, column=9, padx=10)
-        
-        
+    
     def crear_widgets_seccion_busqueda_venta(self) :
         seccion_busqueda = Frame(self.area_listado_compra)
         seccion_busqueda.pack()
@@ -268,7 +273,6 @@ class GestionTransacciones(Frame) :
         self.btn_buscar_venta = Button(seccion_busqueda, text="Filtrar", font=self.font_form, command=self.filtrado_listado_ventas)
         self.btn_buscar_venta.grid(row=0, column=9, padx=10)
         
-
     def crear_transaccion_nueva(self) :
         """ Funcion encargada de crear la transaccion nueva """
         
@@ -305,7 +309,6 @@ class GestionTransacciones(Frame) :
         else :
             ## Sino buscare el precio de compra
             return self.vehiculo_man.obtener_monto_compra(patente_auto_elegido)
-        
     
     def limpiar_formulario(self) :
         # TODO FALTA LIMPIAR LOS RADDIO BUTON

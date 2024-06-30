@@ -17,9 +17,13 @@ class Vehiculo :
         """ Retorna los vehiculos  """
         return self.lista_vehiculos
     
-    def obtener_lista_vehiculos_disponibles(self) :
+    def obtener_lista_vehiculos_disponibles(self, actulizado=False) :
+        if actulizado :
+            lista_vehiculos = self.utils.leer_archivo_json(self.ruta_archivo)
+        else :
+            lista_vehiculos = self.lista_vehiculos
         lista_vehiculos_disponibles = []
-        for vehiculo in self.lista_vehiculos :
+        for vehiculo in lista_vehiculos :
             if vehiculo.get('estado') == "Disponible" :
                 lista_vehiculos_disponibles.append(vehiculo)
         return lista_vehiculos_disponibles

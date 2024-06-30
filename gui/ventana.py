@@ -45,3 +45,5 @@ class Ventana(Frame) :
         selected_tab = event.widget.tab('current')['text']
         if selected_tab == "Gestionar Vehiculos":
             self.frame_gestion_vehiculos.actualizar_grilla(True)
+        if selected_tab == "Transacciones":
+            self.frame_gestion_transacciones.actualizar_selectores()

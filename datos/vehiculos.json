@@ -22,5 +22,29 @@
     "precio_compra": 7000000.0,
     "precio_venta": 8232900.0,
     "estado": "Reservado"
+  },
+  {
+    "id_vehiculo": 4,
+    "patente": "DBY640",
+    "marca": "Ford",
+    "modelo": "Ka",
+    "tipo": "Sedan",
+    "año": 2012,
+    "kilometraje": 1231231,
+    "precio_compra": 3121.0,
+    "precio_venta": 4133.0,
+    "estado": "Disponible"
+  },
+  {
+    "id_vehiculo": 5,
+    "patente": "AFD890",
+    "marca": "Chevrolet",
+    "modelo": "Corsa",
+    "tipo": "Sedan",
+    "año": 2000,
+    "kilometraje": 149890,
+    "precio_compra": 12333.0,
+    "precio_venta": 43121.0,
+    "estado": "Disponible"
   }
 ]
