@@ -32,6 +32,9 @@ class Transaccion :
     
     def obtener_ultimo_id(self) :
         """ Retorna el id del ultimo transaccion o 0 si la lista esta vacia """
+        if len(self.lista_transacciones) == 0 :
+            return 0
+        
         ultima_transaccion = self.lista_transacciones[-1]
         return ultima_transaccion.get('id_transaccion', 0)
     

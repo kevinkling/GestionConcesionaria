@@ -36,7 +36,7 @@ class Ventana(Frame) :
         self.ventana.add(self.frame_gestion_transacciones, text="Transacciones")
         
         ## Pestaña por defecto
-        self.ventana.select(self.frame_gestion_transacciones)
+        self.ventana.select(self.frame_inicio)
 
         ## Evento para cambiar de pestaña
         self.ventana.bind("<<NotebookTabChanged>>", self.se_cambio_pestania)

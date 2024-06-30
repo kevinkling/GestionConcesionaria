@@ -234,7 +234,7 @@ class GestionTransacciones(Frame) :
         self.btn_buscar_compra.grid(row=0, column=9, padx=10)
     
     def crear_widgets_seccion_busqueda_venta(self) :
-        seccion_busqueda = Frame(self.area_listado_compra)
+        seccion_busqueda = Frame(self.area_listado_venta)
         seccion_busqueda.pack()
         
         self.lbl_fecha_desde_venta = Label(seccion_busqueda, text="Fecha Desde: ", padx=10, pady=10)
@@ -305,11 +305,11 @@ class GestionTransacciones(Frame) :
     def obtener_monto(self, tipo_operacion, patente_auto_elegido) :
         if tipo_operacion == "Compra" :
             ## Si la operacion es de tipo compra voy a buscar el monto de venta del vehiculo
-            return self.vehiculo_man.obtener_monto_venta(patente_auto_elegido)
+            return self.vehiculo_man.obtener_monto_compra(patente_auto_elegido)
         else :
             ## Sino buscare el precio de compra
-            return self.vehiculo_man.obtener_monto_compra(patente_auto_elegido)
-    
+            return self.vehiculo_man.obtener_monto_venta(patente_auto_elegido)
+                
     def limpiar_formulario(self) :
         # TODO FALTA LIMPIAR LOS RADDIO BUTON
         self.ingreso_cliente.set("")

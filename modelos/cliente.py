@@ -28,7 +28,7 @@ class Cliente :
     def buscar_cliente(self, criterio, busqueda) :        
         match criterio :
             case "Documento" :
-                return self.buscar_cliente_documento(busqueda)
+                return self.buscar_cliente_documento(int(busqueda))
             case "Apellido" :
                 return self.buscar_cliente_apellido(busqueda)
             case "Nombre" :
@@ -102,10 +102,7 @@ class Cliente :
         return None
     
 
-    # def listar_clientes(self) :
-        
-     
-    
+   
     
     ### FUNCIONES VALIDADORAS
     

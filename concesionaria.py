@@ -9,10 +9,9 @@ def main() :
     instalar_requerimiento.install_packages()
     
     root = Tk()
-    root.title("Hola Mundo | Luz - Cerross - Kevin")
+    root.title("Gestión de Concesionaria de Vehículos")
     root.resizable(False, False)
     root.geometry(utils.calcular_posicion_ventana(root, 1300, 650))
-    # ventana.iconbitmap('img/logo.ico')
 
     app = Ventana(root)     
     app.mainloop()

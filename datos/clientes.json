@@ -16,5 +16,50 @@
     "direccion": "Avenida Siempreviva 742",
     "telefono": "987-6543",
     "correo_electronico": "maria.gomez@example.com"
+  },
+  {
+    "id_cliente": 3,
+    "nombre": "Clara ",
+    "apellido": "Antolin",
+    "documento": 55353010,
+    "direccion": "Avenida mitre",
+    "telefono": "421-3143",
+    "correo_electronico": "cantolin@gmail.com"
+  },
+  {
+    "id_cliente": 4,
+    "nombre": "Jeronimo",
+    "apellido": "Ramirez",
+    "documento": 32970326,
+    "direccion": "Avenida falsa 123",
+    "telefono": "3214123321",
+    "correo_electronico": "jramirez@gmail.com"
+  },
+  {
+    "id_cliente": 5,
+    "nombre": "Basilio",
+    "apellido": "Alonso",
+    "documento": 49150954,
+    "direccion": "Uquiza",
+    "telefono": "3454333123",
+    "correo_electronico": "balonso@gmai.com"
+  },
+  {
+    "id_cliente": 6,
+    "nombre": "Yolanda",
+    "apellido": "Anton",
+    "documento": 21949533,
+    "direccion": "Dr saure",
+    "telefono": "432-1234",
+    "correo_electronico": "yanton@gmail.com"
+  },
+  {
+    "id_cliente": 7,
+    "nombre": "Santos",
+    "apellido": "Acosta",
+    "documento": 52473405,
+    "direccion": "Sarmiento 123",
+    "telefono": "3212312123",
+    "correo_electronico": "sacosta@gmail.com"
   }
 ]

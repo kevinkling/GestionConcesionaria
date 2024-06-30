@@ -1,10 +1,10 @@
 [
   {
     "id_vehiculo": 1,
-    "patente": "ABC127",
+    "patente": "ABC123",
     "marca": "Toyota",
     "modelo": "Corolla",
-    "tipo": "Pickup",
+    "tipo": "Sedan",
     "año": 2010,
     "kilometraje": 75000,
     "precio_compra": 12000.0,
@@ -13,10 +13,10 @@
   },
   {
     "id_vehiculo": 3,
-    "patente": "BVA132",
+    "patente": "BVA133",
     "marca": "Volkswagen",
     "modelo": "Gol",
-    "tipo": "Nose",
+    "tipo": "Hatchback",
     "año": 2019,
     "kilometraje": 30000,
     "precio_compra": 7000000.0,
@@ -25,10 +25,10 @@
   },
   {
     "id_vehiculo": 4,
-    "patente": "DBY640",
+    "patente": "DBY641",
     "marca": "Ford",
     "modelo": "Ka",
-    "tipo": "Sedan",
+    "tipo": "Hatchback",
     "año": 2012,
     "kilometraje": 1231231,
     "precio_compra": 3121.0,
@@ -45,6 +45,42 @@
     "kilometraje": 149890,
     "precio_compra": 12333.0,
     "precio_venta": 43121.0,
+    "estado": "Disponible"
+  },
+  {
+    "id_vehiculo": 6,
+    "patente": "DS123DS",
+    "marca": "Volkswagen",
+    "modelo": "T-cross",
+    "tipo": "Suv",
+    "año": 2021,
+    "kilometraje": 32122,
+    "precio_compra": 3211113.0,
+    "precio_venta": 4251113.0,
+    "estado": "Disponible"
+  },
+  {
+    "id_vehiculo": 7,
+    "patente": "PUY123",
+    "marca": "Toyota",
+    "modelo": "Hilux",
+    "tipo": "Pick-up",
+    "año": 2010,
+    "kilometraje": 190000,
+    "precio_compra": 4123321.0,
+    "precio_venta": 5321000.0,
+    "estado": "Disponible"
+  },
+  {
+    "id_vehiculo": 8,
+    "patente": "FD232AS",
+    "marca": "Toyota",
+    "modelo": "Hilux",
+    "tipo": "Pick-up",
+    "año": 2020,
+    "kilometraje": 79000,
+    "precio_compra": 8123321.0,
+    "precio_venta": 10321222.0,
     "estado": "Disponible"
   }
 ]
